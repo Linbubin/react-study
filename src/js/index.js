@@ -4,7 +4,7 @@ import ComponentHeader from './components/header';
 import ComponentFooter from './components/footer';
 import BodyIndex from './components/bodyindex';
 
-class Index extends React.Component{
+export default class Index extends React.Component{
 	componentsDidMount(){
 		console.log("index");
 	}
@@ -15,6 +15,9 @@ class Index extends React.Component{
 				<BodyIndex 
 					userid= {123}
 				/>
+				<div>
+					{this.props.children}
+				</div>
 				<ComponentFooter/>
 			</div>
 		)
