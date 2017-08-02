@@ -1,24 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Index from './index';
-import ComponentList from './components/list';
-import Listdetail from './components/listdetail';
 import {Router, Route, hashHistory} from 'react-router';
+import 'antd/dist/antd.css';
+import {Button} from 'antd';
+import PCIndex from './components/pc_index';
+import MobileIndex from './components/mobile_index';
+import MediaQuery from 'react-responsive';
 
 export default class Root extends React.Component{
 	render(){
 		return(
-			<Router history={hashHistory}>
-
-        	<Route component={Index} path="/">
-        		<Route component={Listdetail} path="details"></Route>
-        	</Route>
-        	<Route component={ComponentList} path="/list/:id"></Route>
-
-
-      </Router>
+			<div>
+				<MediaQuery query='(min-device-width: 1224px)'>
+					<PCIndex />
+				</MediaQuery>
+				<MediaQuery query='(max-device-width: 1224px)'>
+					<MobileIndex />
+				</MediaQuery>
+			</div>
 		);
 	}
 }
 
-ReactDOM.render(<Root/>, document.getElementById('example'));
+ReactDOM.render(<Root/>, document.getElementById('mainContainer'));
